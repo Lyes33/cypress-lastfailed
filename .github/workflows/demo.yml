@@ -18,6 +18,7 @@ jobs:
         run: |
           cat ./test-results/last-run.txt
       - name: run cypress last test fail
+        if: always()
         run: npx cypress-plugin-last-failed run --e2e --browser chrome
       - name: publish reporter
         uses: actions/upload-artifact@v4
