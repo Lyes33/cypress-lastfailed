@@ -1,0 +1,24 @@
+
+name: run cypress test with github action 
+
+on: [push, workflow_dispatch]
+
+jobs: 
+  cypress-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+      - name: Install dependencies
+        run: npm install
+      - name: run cypress test
+        run: npx cypress run --e2e --browser chrome
+      - name: run cypress last test fail
+        run: npx cypress-plugin-last-failed run --e2e --browser chrome
+      - name: publish reporter
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cypress-reporter
+          path: cypress/reports/html
+      
