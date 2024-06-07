@@ -18,6 +18,7 @@ import './commands'
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
+import 'cypress-mochawesome-reporter/register';
 import { failedTestToggle } from 'cypress-plugin-last-failed';
 
 const registerCypressGrep = require('@bahmutov/cy-grep');
