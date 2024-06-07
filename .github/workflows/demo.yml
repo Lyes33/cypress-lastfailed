@@ -13,6 +13,10 @@ jobs:
         run: npm install
       - name: run cypress test
         run: npx cypress run --e2e --browser chrome
+      - name: Output the file contents 📝
+        if: always()
+        run: |
+          cat ./test-results/last-run.txt
       - name: run cypress last test fail
         run: npx cypress-plugin-last-failed run --e2e --browser chrome
       - name: publish reporter
